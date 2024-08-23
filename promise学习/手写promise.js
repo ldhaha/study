@@ -66,6 +66,8 @@ myPromise.prototype.then = function (onResolved, onRejected) {
       //   onResolved,
       //   onRejected
       // }
+
+      // 异步then返回promise
       this.callbacks.push({
         onResolved: function (value) {
           try {
