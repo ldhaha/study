@@ -66,8 +66,38 @@ myPromise.prototype.then = function (onResolved, onRejected) {
       //   onRejected
       // }
       this.callbacks.push({
-        onResolved,
-        onRejected
+        onResolved: function (data) {
+          try {
+            const result = onResolved(data);
+            if (result instanceof myPromise) {
+              result.then(v => {
+                resolve(v)
+              }, r => {
+                reject(r)
+              })
+            } else {
+              resolve(result)
+            }
+          } catch (e) {
+            reject(e)
+          }
+        },
+        onRejected: function (reason) {
+          try {
+            const result = onRejected(reason);
+            if (result instanceof myPromise) {
+              result.then(v => {
+                resolve(v)
+              }, r => {
+                reject(r)
+              })
+            } else {
+              resolve(result)
+            }
+          } catch (e) {
+            reject(e)
+          }
+        }
       });
     }
   });
