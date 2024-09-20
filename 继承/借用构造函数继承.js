@@ -21,3 +21,10 @@ Student.prototype.learning = function () {
 }
 
 const student = new Student()
+
+// 弊端
+/**
+ * Person函数被调用两次
+ * stu会多出一些属性
+ *
+ */
