@@ -31,7 +31,8 @@ p.then(
 /**
  * Promise.resolve()
  * 如果传递非Promise类型的对象，则返回成功的promise对象,
- * 否则参数的结果决定了resolve的结果
+ * 否则参数的结果决定了resolve的结果 resolve(new Promise((resolve,reject) => reject())) 变成reject
+ * 如果传入一个带then方法的对象，会有then决定  {then:function(resolve,reject){rejcet()}}
  *
  * Promise.reject() 只能返回失败的Promsie对象
  */
