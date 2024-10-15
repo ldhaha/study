@@ -9,3 +9,8 @@ function add() {}
 export { name, add }
 
 // import {name} from './index.js'  必须写后缀名
+
+// 取别名
+export { name as fname }
+// import { name as fname} from './index.js'
+export const age = 20
