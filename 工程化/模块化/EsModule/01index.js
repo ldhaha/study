@@ -13,4 +13,5 @@ export { name, add }
 // 取别名
 export { name as fname }
 // import { name as fname} from './index.js'
+// import * as foo from './index.js' 导出全部
 export const age = 20
