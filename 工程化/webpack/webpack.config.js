@@ -1,6 +1,13 @@
 const { VueLoaderPlugin } = require('vue-loader/dist/index')
 const path = require('path')
-const { plugins } = require('./postcss.config')
+
+// 清楚上次打包内容的插件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// 定义变量,任意模块里都能用到，默认注入process.env.NODE_ENV
+const { DefinePlugin } = require('webpack')
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -9,7 +16,7 @@ module.exports = {
     // assetModuleFilename: 'sd'  配置图片等静态资源名字
   },
 
-  // 配置loader
+  // 配置loader（对特定的模块进行转换）
   module: {
     rules: [
       {
@@ -79,5 +86,27 @@ module.exports = {
       }
     ]
   },
-  plugins: [new VueLoaderPlugin()]
+
+  // 插件用于执行更加广泛的任务，比如优化，资源管理
+  plugins: [
+    new VueLoaderPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: '网页标题'
+      // template:"" 指定模板
+    }),
+    new DefinePlugin({
+      BASE_URL: "'./'"
+    })
+  ],
+
+  resolve: {
+    // 默认 .js .json .wasm
+    extensions: ['.js', '.vue', '.jsx', '.ts', '.tsx'],
+
+    // 目录别名
+    alias: {
+      '@src': path.resolve(__dirname, './src')
+    }
+  }
 }
