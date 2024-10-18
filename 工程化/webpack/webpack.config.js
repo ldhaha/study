@@ -12,8 +12,9 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'build'),
     // assetModuleFilename: 'sd'  配置图片等静态资源名字
+    clean: true // 删除之前的目录 和 CleanWebpackPlugin差不多
   },
 
   // 配置loader（对特定的模块进行转换）
@@ -108,5 +109,11 @@ module.exports = {
     alias: {
       '@src': path.resolve(__dirname, './src')
     }
+  },
+  devServer: {
+    hot: true, // 默认开启热替，
+    port: 8888,
+    host: '0.0.0.0',
+    compress: true // 是否压缩静态文件
   }
 }
