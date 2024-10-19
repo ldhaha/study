@@ -93,8 +93,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: '网页标题'
-      // template:"" 指定模板
+      title: '网页标题',
+      template: './index.html' // 指定模板
     }),
     new DefinePlugin({
       BASE_URL: "'./'"
@@ -114,13 +114,28 @@ module.exports = {
     hot: true, // 默认开启热替，
     port: 8888,
     host: '0.0.0.0',
-    compress: true // 是否压缩静态文件
+    open: true,
+    compress: true, // 是否压缩静态文件,,
+
+    // 静态资源文件目录。默认根目录下public，然后index.html  <script src="./index.js"></script> .就是static配置的名字
+    static: ['public'],
+
+    // 代理
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '^/api': ''
+        },
+        changeOrigin: true // 改变请求头中的host
+      }
+    }
   },
   /**
    * 告知webpack使用相应模式的内置优化 none development production
    * 区别 通过definePlugin 设置process.env.NODE_ENV为生产还是开发
    */
-  mode: 'production',
+  mode: 'development',
 
   // 生成打包后的文件和源文件的对应关系，方便调试定位错误
   devtool: 'source-map'
