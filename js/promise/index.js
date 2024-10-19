@@ -34,6 +34,8 @@ p.then(
  * 否则参数的结果决定了resolve的结果 resolve(new Promise((resolve,reject) => reject())) 变成reject
  * 如果传入一个带then方法的对象，会有then决定  {then:function(resolve,reject){rejcet()}}
  *
+ * 注：执行传递的reject,状态还是fullfilled,但是只能catch,
+ *
  * Promise.reject() 只能返回失败的Promsie对象
  */
 
@@ -43,7 +45,7 @@ p.then(
 //   })
 // )
 
-// 改变promise状态的三种方式，resolve,reject 或者 throw new Error('ad')
+// 改变promise状态的三种方式，resolve,reject 或者 throw new Error('ad'),thenable对象
 
 const p2 = new Promise((resolve, reject) => {
   if (n === 3) {

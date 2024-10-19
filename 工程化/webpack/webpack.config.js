@@ -115,5 +115,13 @@ module.exports = {
     port: 8888,
     host: '0.0.0.0',
     compress: true // 是否压缩静态文件
-  }
+  },
+  /**
+   * 告知webpack使用相应模式的内置优化 none development production
+   * 区别 通过definePlugin 设置process.env.NODE_ENV为生产还是开发
+   */
+  mode: 'production',
+
+  // 生成打包后的文件和源文件的对应关系，方便调试定位错误
+  devtool: 'source-map'
 }
