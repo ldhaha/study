@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const MiniCsssExtractPlugin = require('mini-css-extract-plugin')
-
+const TerserPlugin = require('terser-webpack-plugin')
 module.exports = {
   // 多入口打包
   entry: {
@@ -58,6 +58,25 @@ module.exports = {
 
   // 生产环境分包（优化）
   optimization: {
+    // 开启代码优化。生产默认开启
+    minimize: true,
+
+    // 放压缩相关插件
+    minimizer: [
+      new TerserPlugin({
+        // 抽取注释
+        extractComments: true,
+        terserOptions: {
+          compress: {
+            arguments: true,
+
+            // 保留不可达的代码
+            unused: false
+          },
+          mangle: true
+        }
+      })
+    ],
     splitChunks: {
       // development:named, production:deterministic
       // chunkId: '',
