@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const MiniCsssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   // 多入口打包
@@ -42,6 +43,16 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html'
+    }),
+
+    // 提取css
+    new MiniCsssExtractPlugin({
+      filename: '[name]_[hash:6].css',
+
+      // 动态导入
+      chunkFilename: '[name]_[hash:6].css'
+
+      // 另外还需要MiniCsssExtractPlugin.loader
     })
   ],
 
