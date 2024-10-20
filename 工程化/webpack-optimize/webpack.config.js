@@ -18,6 +18,13 @@ module.exports = {
     // 共享的第三方库
     shared: ['axios']
   },
+
+  // 哪些库不用打包
+  externals: {
+    // key代表第三包的名字
+    // value cnd请i求地址提供的具体名称
+    axios: 'axios'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name]-bundle.js',
