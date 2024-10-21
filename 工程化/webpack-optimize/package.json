@@ -2,10 +2,11 @@
   "name": "webpack-optimize",
   "version": "1.0.0",
   "main": "index.js",
+  "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js --env production"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +20,11 @@
     "webpack-dev-server": "^5.1.0"
   },
   "devDependencies": {
+    "css-minimizer-webpack-plugin": "^7.0.0",
     "html-webpack-plugin": "^5.6.2",
     "mini-css-extract-plugin": "^2.9.1",
+    "purgecss-webpack-plugin": "^6.0.0",
+    "speed-measure-webpack-plugin": "^1.5.0",
     "terser-webpack-plugin": "^5.3.10"
   }
 }
