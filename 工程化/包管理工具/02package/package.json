@@ -1,0 +1,10 @@
+{
+  "name": "package_demo",
+  "version": "1.0.1",
+  "main": "main.js",  
+  "dependencies": {
+
+  }
+}
+
+// main可以告诉node读取哪个文件，比如之前require默认是index开头的文件，现在就是main.js

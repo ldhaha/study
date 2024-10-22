@@ -1,0 +1,35 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "serve": "webpack serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.8",
+    "autoprefixer": "^10.4.20",
+    "babel-loader": "^9.2.1",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "less-loader": "^12.2.0",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^10.0.7",
+    "style-loader": "^4.0.0",
+    "vue-loader": "^17.4.2",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0",
+    "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "vue": "^3.5.12"
+  }
+}
