@@ -10,10 +10,11 @@ type ObjType = {
 const obj: { name: string } = { name: 'lu' }
 console.log(obj.name)
 
-// 函数类型
+// 函数类型,如果函数作为参数，ts不校验函数的参数个数
 function foo(a: number, b: number, ...args: string[]): number {
   return a + b
 }
+foo(2, 3)
 
 const bar: (a: number, b: number) => number = (a: number, b: number): number => {
   return a + b
