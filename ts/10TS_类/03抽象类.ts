@@ -39,4 +39,11 @@ function printPerson(p: Person) {
 // ts类型检测是鸭子类型,只关心有没有对应的属性
 printPerson({ name: 'lindong' })
 
+// 构造函数签名
+type CLASS = new () => void
+
+function factory(factory: CLASS) {
+  return new factory()
+}
+
 export {}
