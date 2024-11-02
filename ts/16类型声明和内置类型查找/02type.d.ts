@@ -1,0 +1,1 @@
+type LD = number
