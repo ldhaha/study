@@ -1,4 +1,4 @@
-// 抽象类不能实例化，既可以有抽象方法也可以有普通方法，抽象方法必须被子类实现
+// 抽象类不能实例化，既可以有抽象方法也可以有普通方法，抽象方法必须被子类实现，只能被单一继承
 abstract class Shape {
   // 抽象方法必须出现在抽象类中
   abstract getArea()
@@ -38,5 +38,12 @@ function printPerson(p: Person) {
 }
 // ts类型检测是鸭子类型,只关心有没有对应的属性
 printPerson({ name: 'lindong' })
+
+// 构造函数签名
+type CLASS = new () => void
+
+function factory(factory: CLASS) {
+  return new factory()
+}
 
 export {}
