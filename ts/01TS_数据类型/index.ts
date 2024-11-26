@@ -1,4 +1,4 @@
-// 定义数组类型
+// 定义数组类型,两种方式
 const name: string[] = []
 const name2: Array<string> = []
 
