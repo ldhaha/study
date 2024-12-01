@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 类组件
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "hello world",
+            list: ["火影忍者", "七龙珠"],
+          };
+          this.changeMessage = this.changeMessage.bind(this);
+        }
+        changeMessage() {
+          // this.state.message = 'chen lei';
+          // console.log(this.state);
+
+          // 1.修改message  2.重新执行render
+          this.setState({
+            message: "chenlei",
+          });
+        }
+        render() {
+          return (
+            <div>
+              {/* 注释写法 */}
+              <h2>{this.state.message}</h2>
+              <button onClick={() => this.changeMessage()}>改变名字</button>
+              <ul>
+                {this.state.list.map((movie) => (
+                  <li>{movie}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        }
+      }
+      function MyApp() {
+        let message = "hello";
+        function click() {
+          message = "陈磊";
+          root.render(<MyApp />);
+          console.log(message);
+        }
+        return (
+          <div>
+            <h2>{message}</h2>
+            <button onClick={click}>改变名字</button>
+          </div>
+        );
+      }
+      // react 18以前
+      //   ReactDOM.render(<h2>hellow</h2>,document.getElementById('root'));
+
+      // react 18以后
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>

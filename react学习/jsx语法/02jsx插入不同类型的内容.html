@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 类组件
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "hello world",
+            list: ["火影忍者", "七龙珠"],
+            number: 2,
+            a: null,
+            b: undefined,
+            c: true,
+          };
+        }
+
+        message() {
+          return this.state.message;
+        }
+        render() {
+          const { message, list, number, a, b, c } = this.state;
+          return (
+            <div>
+              {/* number,string,array可以直接显示 */}
+              {message} {number} {list}
+              {/* null,undefined,bool显示空 */}
+              {a} {b} {c}
+              {/* 对象不能作为子元素 */}
+              {/* 插入对应的表达式 */}
+              {2 + 4}
+              <h1>{1 == 2 ? "chenlei" : "lindong"}</h1>
+              <h2>{this.message()}</h2>
+            </div>
+          );
+        }
+      }
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>
