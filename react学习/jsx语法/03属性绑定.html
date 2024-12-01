@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 类组件
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "hello world",
+            list: ["火影忍者", "七龙珠"],
+            number: 2,
+            a: null,
+            b: undefined,
+            c: true,
+          };
+        }
+
+        message() {
+          return this.state.message;
+        }
+        render() {
+          const { message, list, number, a, b, c } = this.state;
+          /* 动态class */
+          const className = `b a ${c ? "c" : "d"}`;
+          const className2 = c ? ["b", "c"] : ["a", "b", "c"];
+          return (
+            <div>
+              {/* 基本绑定 */}
+              <h2 className="ccc" title={message}>
+                标题
+              </h2>
+              {/* 绑定class */}
+              <h2 className="ccc">标题</h2>
+              <h2 className={className}>动态class</h2>
+
+              {/* 动态绑定style */}
+              <h2 style={{ color: c ? "green" : "red" }}>动态style</h2>
+            </div>
+          );
+        }
+      }
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>

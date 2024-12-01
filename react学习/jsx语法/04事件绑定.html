@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 类组件
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "hello world",
+          };
+          this.message = this.message.bind(this);
+        }
+        btnClick = () => {
+          console.log("23");
+        };
+        message() {
+          return this.state.message;
+        }
+        render() {
+          const { message } = this.state;
+          return <div>{message}</div>;
+        }
+      }
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>
