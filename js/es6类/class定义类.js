@@ -16,10 +16,11 @@ class Person {
   }
   set address(newAddress) {
     this._address = newAddress
+
   }
 
   // 静态方法,Person去访问
-  static createPerson() {}
+  static createPerson() { }
 }
 
 // 继承
