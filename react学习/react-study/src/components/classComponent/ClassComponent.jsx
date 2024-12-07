@@ -1,4 +1,5 @@
 import { Component } from "react";
+
 class ClassComponent extends Component {
   //1.constructor方法
   constructor() {
@@ -37,6 +38,11 @@ class ClassComponent extends Component {
   // 5.组建卸载
   componentWillUnmount() {
     console.log("组件即将被卸载");
+  }
+
+  // 返回true,更新时会重新执行render
+  shouldComponentUpdate() {
+    return true;
   }
 }
 
