@@ -19,15 +19,20 @@
             constructor() {
                 super();
                 this.state = {
-                    message: "hello world",
+                    message: "条件语句",
+                    isLogin: false
                 };
             }
-            btnClick = (e, name, age) => {
-                console.log(e, name, age);
+            btnClick = () => {
+                this.setState({
+                    isLogin: true
+                })
             };
             render() {
+                const { isLogin } = this.state;
+                const loginInfo = isLogin ? <h3>已经登陆</h3> : <h3>尚未登陆</h3>;
                 const { message } = this.state;
-                return <div onClick={(e) => this.btnClick(e, 'chenlei', 26)}>{message}</div>;
+                return (<div>{loginInfo} {isLogin && <div>登陆了</div>}<button onClick={(e) => this.btnClick(e, 'chenlei', 26)}>{message}</button></div>);
             }
         }
         const container = document.getElementById("root");
