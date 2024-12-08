@@ -23,7 +23,7 @@ function App() {
         <button onClick={addCount}>增加count</button>
         <ClassComponent />
         <Header />
-        <Main setInfo={setUserInfo} />
+        <Main {...userInfo} setInfo={setUserInfo} />
         <Footer />
       </div>
     </AppContext.Provider>
