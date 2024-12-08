@@ -1,0 +1,11 @@
+.tab-header {
+  display: flex;
+}
+.tab {
+  cursor: pointer;
+  flex: 1 1 0;
+  text-align: center;
+}
+.active-tab {
+  color: #1d46f7;
+}

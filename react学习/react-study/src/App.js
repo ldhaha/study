@@ -3,6 +3,7 @@ import ClassComponent from "./components/classComponent/ClassComponent";
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Slot from "./components/Slot";
 
 // 组建通信，不局限于父子组件，使用createContext(子组件接收使用useContext)
 export const AppContext = createContext("appContext");
@@ -25,6 +26,7 @@ function App() {
         <Header />
         <Main {...userInfo} setInfo={setUserInfo} />
         <Footer />
+        <Slot />
       </div>
     </AppContext.Provider>
   );
