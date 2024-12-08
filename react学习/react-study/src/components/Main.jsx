@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { AppContext } from "../App";
-export function Main(props) {
-  console.log(props);
-  const { setInfo } = props;
+import PropTypes from "prop-types";
+export function Main({ name = "宇智波斑", age = 26, setInfo }) {
+  //   console.log(props);
+  //   const { setInfo } = props;
   // 任意地方传值
   const appContext = useContext(AppContext);
   return (
@@ -14,9 +15,22 @@ export function Main(props) {
         })
       }
     >
-      Main{appContext}
+      Main{appContext} {name} {age}
     </div>
   );
 }
 
+// 约束类型
+Main.prototype = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  setInfo: PropTypes.func,
+};
+
+// 类组件默认值
+// Main.defaultProps = {
+//   name: "linyue",
+//   age: 30,
+//   setInfo: () => {},
+// };
 export default Main;
