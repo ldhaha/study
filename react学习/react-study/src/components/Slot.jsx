@@ -4,7 +4,8 @@ export default function Slot() {
   return (
     <div>
       <h1>插槽</h1>
-      <SlotParent buttonSlot={<button>button</button>}>
+      {/* 带参数就成了作用域插槽有子元素决定一些东西 */}
+      <SlotParent buttonSlot={(item) => <button>{item}</button>}>
         <div>第一个插槽</div>
         <div>第二个插槽</div>
       </SlotParent>
@@ -17,7 +18,7 @@ function SlotParent({ children, buttonSlot }) {
   console.log(children);
   return (
     <div>
-      {children.map((item) => item)} {buttonSlot}
+      {children.map((item) => item)} {buttonSlot("子元素")}
     </div>
   );
 }

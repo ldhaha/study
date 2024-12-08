@@ -15,7 +15,14 @@ export function Main({ name = "宇智波斑", age = 26, setInfo }) {
         })
       }
     >
-      Main{appContext} {name} {age}
+      <div>
+        Main{appContext} {name} {age}
+      </div>
+      {/* // context第二种获取值写法 */}
+      <AppContext.Consumer>
+        {(value) => <div>cousumer拿到context：{value}</div>}
+      </AppContext.Consumer>
+      <div></div>
     </div>
   );
 }
@@ -33,4 +40,6 @@ Main.prototype = {
 //   age: 30,
 //   setInfo: () => {},
 // };
+
+// 类组件通过Main.contextType = 定义，然后在this.context里面拿
 export default Main;
