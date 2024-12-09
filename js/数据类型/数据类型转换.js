@@ -45,3 +45,15 @@
  * 3.对象类型和原始类型比较时，对象类型会通过ToPrimitive转成原始类型
  * 4.null和undefined之间互相宽松相等（==），并且也与其自身相等，但和其他所有的值都不宽松相等（==）。
  */
+
+
+const a = {
+   number: 1,
+   valueOf() {
+      return this.number++
+   }
+}
+
+a + 2 //3
+a + 2 //4
+a + 2 //5

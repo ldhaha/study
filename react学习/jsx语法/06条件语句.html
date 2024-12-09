@@ -32,7 +32,7 @@
                 const { isLogin } = this.state;
                 const loginInfo = isLogin ? <h3>已经登陆</h3> : <h3>尚未登陆</h3>;
                 const { message } = this.state;
-                return (<div>{loginInfo} {isLogin && <div>登陆了</div>}<button onClick={(e) => this.btnClick(e, 'chenlei', 26)}>{message}</button></div>);
+                return (<div>{loginInfo} {isLogin && <div>登录了</div>}<button onClick={(e) => this.btnClick(e, 'chenlei', 26)}>{message}</button></div>);
             }
         }
         const container = document.getElementById("root");
