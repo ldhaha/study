@@ -1,4 +1,4 @@
-import { Component, createRef } from "react";
+import { Component, createRef, forwardRef } from "react";
 import { flushSync } from "react-dom";
 
 /**
@@ -8,6 +8,10 @@ import { flushSync } from "react-dom";
  *
  * 或者 直接继承PureComponent
  */
+
+const HelloWorld = forwardRef(function (props, ref) {
+  return <div ref={ref}>哈哈哈</div>;
+});
 
 class ClassComponent extends Component {
   //1.constructor方法
@@ -19,6 +23,7 @@ class ClassComponent extends Component {
     };
     this.h2 = createRef();
     this.h3 = null;
+    this.helloworldRef = createRef();
   }
   update() {
     // // 不能拿到最新的
@@ -44,7 +49,7 @@ class ClassComponent extends Component {
     console.log("1313");
   }
 
-  // 获取原生dom
+  // 获取原生dom,只能针对类组件
   getNativeEle() {
     //1 绑定一个ref字符串(不推荐)
     console.log(this.refs.h1);
@@ -52,6 +57,8 @@ class ClassComponent extends Component {
     console.log(this.h2.current);
     //3 通过回调函数
     console.log(this.h3);
+
+    console.log(this.helloworldRef.current);
   }
   // 2.render（改变state,props会重新执行render,然后在执行update）
   render() {
@@ -59,6 +66,7 @@ class ClassComponent extends Component {
     console.log("render");
     return (
       <div>
+        <HelloWorld ref={this.helloworldRef} />
         <h1 ref="h1">{message}</h1>
         <h2 ref={this.h2}>class组件</h2>
         <button ref={(e) => (this.h3 = e)} onClick={() => this.getNativeEle()}>
