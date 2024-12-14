@@ -1,4 +1,4 @@
-import { Component, PureComponent } from "react";
+import { Component, createRef } from "react";
 import { flushSync } from "react-dom";
 
 /**
@@ -9,7 +9,7 @@ import { flushSync } from "react-dom";
  * 或者 直接继承PureComponent
  */
 
-class ClassComponent extends PureComponent {
+class ClassComponent extends Component {
   //1.constructor方法
   constructor() {
     super();
@@ -17,6 +17,8 @@ class ClassComponent extends PureComponent {
     this.state = {
       message: "lindong",
     };
+    this.h2 = createRef();
+    this.h3 = null;
   }
   update() {
     // // 不能拿到最新的
@@ -41,15 +43,27 @@ class ClassComponent extends PureComponent {
     console.log(this.state);
     console.log("1313");
   }
+
+  // 获取原生dom
+  getNativeEle() {
+    //1 绑定一个ref字符串(不推荐)
+    console.log(this.refs.h1);
+    // 2通过createref
+    console.log(this.h2.current);
+    //3 通过回调函数
+    console.log(this.h3);
+  }
   // 2.render（改变state,props会重新执行render,然后在执行update）
   render() {
     const { message } = this.state;
     console.log("render");
     return (
       <div>
-        <h1>{message}</h1>
-        <h2>class组件</h2>
-        <button onClick={() => this.update()}>update</button>
+        <h1 ref="h1">{message}</h1>
+        <h2 ref={this.h2}>class组件</h2>
+        <button ref={(e) => (this.h3 = e)} onClick={() => this.getNativeEle()}>
+          update
+        </button>
       </div>
     );
   }
