@@ -20,8 +20,8 @@ function App() {
     // 视频类组件引入这个可以拿到及时的 但是函数组件实际不可以
     flushSync(() => {
       setCount(count + 1);
-      console.log(count);
     });
+    console.log(count);
   }
   return (
     // 组建通信

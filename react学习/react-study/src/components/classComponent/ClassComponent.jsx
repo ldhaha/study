@@ -1,6 +1,15 @@
-import { Component } from "react";
+import { Component, PureComponent } from "react";
+import { flushSync } from "react-dom";
 
-class ClassComponent extends Component {
+/**
+ * react优化  默认你如果更新state,即使相同的值，react也会重新执行render函数。
+ * 你可以通过shouldComponentUpdate(nextState,nextProps)来写对应的逻辑处理，
+ * 如果和this.state相等，则return false则不更新
+ *
+ * 或者 直接继承PureComponent
+ */
+
+class ClassComponent extends PureComponent {
   //1.constructor方法
   constructor() {
     super();
@@ -10,9 +19,27 @@ class ClassComponent extends Component {
     };
   }
   update() {
-    this.setState({
-      message: "chenlei",
+    // // 不能拿到最新的
+    // this.setState({
+    //   message: "chenlei",
+    // });
+    // console.log("message", this.state.message);
+    // // 拿到新的第一种写法
+    // this.setState((state) => {
+    //   console.log("callback");
+    //   return {
+    //     message: "linyue",
+    //   };
+    // });
+
+    // 同步更新，拿到最新的state
+    flushSync(() => {
+      this.setState({
+        message: "chenlei2",
+      });
     });
+    console.log(this.state);
+    console.log("1313");
   }
   // 2.render（改变state,props会重新执行render,然后在执行update）
   render() {
