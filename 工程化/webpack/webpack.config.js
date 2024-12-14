@@ -120,16 +120,16 @@ module.exports = {
     // 静态资源文件目录。默认根目录下public，然后index.html  <script src="./index.js"></script> .就是static配置的名字
     static: ['public'],
 
-    // 代理
-    proxy: {
-      '/api': {
-        target: 'http://localhost:9000',
-        pathRewrite: {
-          '^/api': ''
-        },
-        changeOrigin: true // 改变请求头中的host
-      }
-    }
+    // // 代理
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:9000',
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     },
+    //     changeOrigin: true // 改变请求头中的host
+    //   }
+    // }
   },
   /**
    * 告知webpack使用相应模式的内置优化 none development production
