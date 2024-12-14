@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Slot from "./components/Slot";
+import { flushSync } from "react-dom";
 
 // 组建通信，不局限于父子组件，使用createContext(子组件接收使用useContext)
 export const AppContext = createContext("appContext");
@@ -14,7 +15,13 @@ function App() {
     age: 26,
   });
   function addCount() {
-    setCount(count + 1);
+    // react18以后 setstate执行都是批处理
+
+    // 视频类组件引入这个可以拿到及时的 但是函数组件实际不可以
+    flushSync(() => {
+      setCount(count + 1);
+      console.log(count);
+    });
   }
   return (
     // 组建通信
