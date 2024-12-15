@@ -1,0 +1,16 @@
+.ld-enter {
+  opacity: 0;
+}
+.ld-enter-active {
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+.ld-exit {
+  opacity: 1;
+}
+
+.ld-exit-active {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
