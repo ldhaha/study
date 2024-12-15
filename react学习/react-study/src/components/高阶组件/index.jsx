@@ -23,6 +23,8 @@ export default function App() {
   return (
     <ThemeContext.Provider value={theme}>
       <Com />
+
+      {/* {withThemeColor(InnerCom)} */}
     </ThemeContext.Provider>
   );
 }
