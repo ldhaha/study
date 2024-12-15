@@ -36,7 +36,11 @@ export default class index extends PureComponent {
     return (
       <div>
         {inputValue}
-        <input value={inputValue} onChange={(e) => this.changeInput(e)} />
+        <input
+          key="13"
+          value={inputValue}
+          onChange={(e) => this.changeInput(e)}
+        />
 
         <div>
           {checkBoxOptions.map((item, index) => {
@@ -44,7 +48,7 @@ export default class index extends PureComponent {
               <div>
                 {item.name}
                 <input
-                  key={item.value}
+                  key={index}
                   type="checkbox"
                   value={item.value}
                   checked={item.isChecked}

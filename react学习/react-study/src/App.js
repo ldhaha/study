@@ -7,6 +7,7 @@ import Slot from "./components/Slot";
 import { flushSync } from "react-dom";
 import ControlComponent from "./components/受控组件";
 import HighComponent from "./components/高阶组件";
+import { Portal } from "./components/react的protal";
 // 组建通信，不局限于父子组件，使用createContext(子组件接收使用useContext)
 export const AppContext = createContext("appContext");
 function App() {
@@ -39,6 +40,8 @@ function App() {
         <ControlComponent />
         <h2>高阶组件</h2>
         <HighComponent />
+        <h2>Portal</h2>
+        <Portal />
       </div>
     </AppContext.Provider>
   );
