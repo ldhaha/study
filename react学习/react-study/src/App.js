@@ -9,6 +9,7 @@ import ControlComponent from "./components/受控组件";
 import HighComponent from "./components/高阶组件";
 import { Portal } from "./components/react的protal";
 import { Donghua } from "./components/动画";
+import { CssModule } from "./components/CssModule";
 // 组建通信，不局限于父子组件，使用createContext(子组件接收使用useContext)
 export const AppContext = createContext("appContext");
 function App() {
@@ -45,6 +46,8 @@ function App() {
         <Portal />
         <h2>动画</h2>
         <Donghua />
+        <h2>CssModule</h2>
+        <CssModule />
       </div>
     </AppContext.Provider>
   );
