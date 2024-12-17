@@ -3,9 +3,6 @@ import { useState } from "react";
 import "./stye.css";
 export function Donghua() {
   const [isShow, setIsShow] = useState(false);
-  function setValue() {
-    setIsShow(!isShow);
-  }
   return (
     <div>
       <CSSTransition
@@ -18,7 +15,7 @@ export function Donghua() {
         <div>哈哈哈</div>
       </CSSTransition>
 
-      <button onClick={() => setValue()}>按钮</button>
+      <button onClick={() => setIsShow(!isShow)}>按钮</button>
     </div>
   );
 }
