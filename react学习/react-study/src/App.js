@@ -23,7 +23,7 @@ function App() {
   function addCount() {
     // react18以后 setstate执行都是批处理
 
-    // 视频类组件引入这个可以拿到及时的 但是函数组件实际不可以，需要通过memo
+    // 视频类组件引入这个可以拿到及时的 但是函数组件实际不可以
     flushSync(() => {
       setCount(count + 1);
     });

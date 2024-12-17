@@ -19,7 +19,7 @@ function InnerCom(props) {
 
 export default function App() {
   const Com = withThemeColor(InnerCom);
-  const [theme, setTheme] = useState({ color: "red" });
+  const [theme] = useState({ color: "red" });
   return (
     <ThemeContext.Provider value={theme}>
       <Com />
