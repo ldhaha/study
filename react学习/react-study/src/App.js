@@ -11,7 +11,6 @@ import { Portal } from "./components/react的protal";
 import { Donghua } from "./components/动画";
 import { CssModule } from "./components/CssModule";
 import { CssInJs } from "./components/CssInJs";
-import { ReactRouter } from './components/react-router'
 // 组建通信，不局限于父子组件，使用createContext(子组件接收使用useContext)
 export const AppContext = createContext("appContext");
 function App() {
@@ -52,8 +51,6 @@ function App() {
         <CssModule />
         <h2>CssInJs</h2>
         <CssInJs />
-        <h2>react 路由</h2>
-        <ReactRouter />
       </div>
     </AppContext.Provider>
   );
