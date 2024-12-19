@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from "react";
 import { addCountAction, getDataAction } from "../store/actionCreator";
 import { store } from "../store";
@@ -10,8 +11,8 @@ function Home(props) {
   return (
     <div>
       <div>
-        {props.banners.map((_) => (
-          <div>{_}</div>
+        {props.banners.map((_, index) => (
+          <div key={index}>{_}</div>
         ))}
       </div>
       <button onClick={() => store.dispatch(addCountAction(-1))}>
