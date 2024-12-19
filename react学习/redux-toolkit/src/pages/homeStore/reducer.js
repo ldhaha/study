@@ -1,6 +1,7 @@
 import { ADD_COUNT } from "./constant";
 const initialState = {
   count: 1,
+  age: 20,
 };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
