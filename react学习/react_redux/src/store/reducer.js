@@ -1,6 +1,7 @@
-import { ADD_COUNT } from "./constant";
+import { ADD_COUNT, GET_DATA } from "./constant";
 const initialState = {
   count: 1,
+  banners: [],
 };
 
 export function reducer(state = initialState, action) {
@@ -9,6 +10,12 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         count: state.count + action.count,
+      };
+    }
+    case GET_DATA: {
+      return {
+        ...state,
+        banners: action.banners,
       };
     }
     default: {
