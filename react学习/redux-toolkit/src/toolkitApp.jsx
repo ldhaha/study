@@ -1,5 +1,5 @@
 // import React from 'react';
-// import { connect, useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import { add_count } from './features/counterSlice';
 
 // export const ToolkitApp = (props) => {
@@ -13,7 +13,7 @@ import { add_count } from './features/counterSlice';
 //   );
 // };
 
-// export default connect(ToolkitApp);
+// export default ToolkitApp;
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -23,7 +23,7 @@ export class ToolkitApp extends Component {
     // const { count } = this.props;
     return (
       <div>
-        toolkitApp {this.props.count}{' '}
+        toolkitApp {this.props.count}
         <button onClick={() => this.props.addCount()}>添加</button>
       </div>
     );
