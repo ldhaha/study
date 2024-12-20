@@ -1,6 +1,6 @@
 // import React from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
-import { add_count } from './features/counterSlice';
+import { add_count, fetchDataAction } from "./features/counterSlice";
 
 // export const ToolkitApp = (props) => {
 //   const dispatch = useDispatch();
@@ -15,10 +15,13 @@ import { add_count } from './features/counterSlice';
 
 // export default ToolkitApp;
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 export class ToolkitApp extends Component {
+  componentDidMount() {
+    this.props.fetchData();
+  }
   render() {
     // const { count } = this.props;
     return (
@@ -31,13 +34,16 @@ export class ToolkitApp extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  count: state.counter.count
+  count: state.counter.count,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addCount() {
     dispatch(add_count(5));
-  }
+  },
+  fetchData() {
+    dispatch(fetchDataAction());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToolkitApp);
