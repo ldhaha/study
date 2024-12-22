@@ -22,8 +22,8 @@ const Login = memo(() => {
   }
   return (
     <Spin loading={loading}>
-      <LoginWrapper>
-        <div className="login-wrapper">
+      <LoginWrapper className="w-[100vw] h-[100vh] flex justify-center items-center">
+        <div className="login-wrapper !w-[600px] mx-auto !h-[400px] ">
           <Button type="primary" onClick={() => login()}>
             登录
           </Button>
