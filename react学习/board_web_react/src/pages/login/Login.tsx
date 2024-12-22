@@ -1,25 +1,35 @@
-import { memo } from "react";
-import { useDispatch } from "react-redux";
-import { setUserInfo } from "@/featrues/userInfoSlice";
-import { useRoute } from "@/hooks";
+import { memo, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfoAction } from "@/featrues/userInfoSlice";
 import { LoginWrapper } from "./style";
-import { Button } from "@arco-design/web-react";
+import { Button, Spin } from "@arco-design/web-react";
+import { StoreType } from "@/store/storeType";
+import { useRoute } from "@/hooks";
 
 const Login = memo(() => {
-  const dispatch = useDispatch();
   const { navigate } = useRoute();
+  const [loading, setLoading] = useState(false);
+  const userInfo = useSelector((state: StoreType) => state.userInfo);
+  useEffect(() => {
+    if (userInfo.id) {
+      navigate("/homepage");
+    }
+  }, [userInfo]);
+  const dispatch = useDispatch();
   function login() {
-    dispatch(setUserInfo({ id: 456 }));
-    navigate("/homepage");
+    setLoading(true);
+    dispatch(getUserInfoAction() as any);
   }
   return (
-    <LoginWrapper>
-      <div className="login-wrapper">
-        <Button type="primary" onClick={() => login()}>
-          登录
-        </Button>
-      </div>
-    </LoginWrapper>
+    <Spin loading={loading}>
+      <LoginWrapper>
+        <div className="login-wrapper">
+          <Button type="primary" onClick={() => login()}>
+            登录
+          </Button>
+        </div>
+      </LoginWrapper>
+    </Spin>
   );
 });
 
