@@ -1,8 +1,9 @@
-import { Routes, Route, Link, Navigate } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import NotFound from "./pages/NotFound";
-import HomeRecommend from "./pages/HomeRecommend";
+import { Link, useRoutes } from "react-router-dom";
+// import Home from "./pages/Home";
+// import About from "./pages/About";
+// import NotFound from "./pages/NotFound";
+// import HomeRecommend from "./pages/HomeRecommend";
+import routes from "./router";
 function App() {
   return (
     <div className="App">
@@ -14,7 +15,8 @@ function App() {
         </Link>
       </div>
       <div className="content">
-        <Routes>
+        {useRoutes(routes)}
+        {/* <Routes>
           <Route path="/" element={<Navigate to="/home" />}></Route>
           <Route path="/home" element={<Home />}>
             <Route
@@ -25,7 +27,7 @@ function App() {
           </Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="*" element={<NotFound />}></Route>
-        </Routes>
+        </Routes> */}
       </div>
       <div className="footer">footer</div>
     </div>
