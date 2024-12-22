@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { setUserInfo } from "@/featrues/userInfoSlice";
 import { useRoute } from "@/hooks";
 import { LoginWrapper } from "./style";
+import { Button } from "@arco-design/web-react";
+
 const Login = memo(() => {
   const dispatch = useDispatch();
   const { navigate } = useRoute();
@@ -13,7 +15,9 @@ const Login = memo(() => {
   return (
     <LoginWrapper>
       <div className="login-wrapper">
-        <button onClick={() => login()}>登录</button>
+        <Button type="primary" onClick={() => login()}>
+          登录
+        </Button>
       </div>
     </LoginWrapper>
   );
