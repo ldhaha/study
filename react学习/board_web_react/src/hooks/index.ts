@@ -1,3 +1,3 @@
-import { useRoute } from "./useRoute";
+import { useRoute } from './useRoute';
 
 export { useRoute };
