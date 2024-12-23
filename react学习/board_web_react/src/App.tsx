@@ -8,7 +8,6 @@ function App() {
   const { navigate } = useRoute();
   const userInfo = useSelector((state: StoreType) => state.userInfo);
   useEffect(() => {
-    console.log("执行了");
     if (!userInfo.id) {
       navigate("/login");
     } else {

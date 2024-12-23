@@ -1,8 +1,9 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const LoginWrapper = styled.div`
-  .login-wrapper {
-    width: 100vw;
-    height: 100vh;
+   {
+    background-image: url('./imgs/login-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 `;

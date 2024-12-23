@@ -1,5 +1,5 @@
 declare global {
-  declare type ld = {
+  type ld = {
     name: string;
   };
 }

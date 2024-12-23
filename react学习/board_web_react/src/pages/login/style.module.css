@@ -1,0 +1,5 @@
+.loginWrapper {
+  background-image: url('./imgs/login-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -1,28 +1,35 @@
-import { memo, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserInfoAction } from "@/featrues/userInfoSlice";
+import { memo, useState } from "react";
+import { setUserInfo } from "@/featrues/userInfoSlice";
 import { LoginWrapper } from "./style";
 import { Button, Spin } from "@arco-design/web-react";
-import { StoreType } from "@/store/storeType";
-import { useRoute } from "@/hooks";
-
+import {  UserInfo } from "@/store/storeType";
+import { useDispatch } from "react-redux";
+import style from './style.module.css'
 const Login = memo(() => {
-  const { navigate } = useRoute();
   const [loading, setLoading] = useState(false);
-  const userInfo = useSelector((state: StoreType) => state.userInfo);
-  useEffect(() => {
-    if (userInfo.id) {
-      navigate("/homepage");
-    }
-  }, [userInfo]);
   const dispatch = useDispatch();
-  function login() {
+ 
+  // 模拟获取用户信息
+  const getUserInfo = (): Promise<UserInfo> =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          id: 1,
+          name: 'lindong'
+        });
+      }, 1000);
+    });
+
+  // 登录
+  async function login() {
     setLoading(true);
-    dispatch(getUserInfoAction() as any);
+    const res  = await getUserInfo();
+    dispatch(setUserInfo(res));
+   
   }
   return (
     <Spin loading={loading}>
-      <LoginWrapper className="w-[100vw] h-[100vh] flex justify-center items-center">
+      <LoginWrapper className={`w-[100vw] h-[100vh] flex justify-center items-center ${style.loginWrapper}`}>
         <div className="login-wrapper !w-[600px] mx-auto !h-[400px] ">
           <Button type="primary" onClick={() => login()}>
             登录
