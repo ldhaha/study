@@ -49,7 +49,7 @@ const Login = memo(() => {
       <LoginWrapper
         className={`w-[100vw] h-[100vh] flex justify-center items-center ${style.loginWrapper}`}
       >
-        <div className='login-wrapper w-[416px] h-[456px] rounded-[8px] ml-auto mr-[140px] bg-[white] '>
+        <div className='login-wrapper w-[416px] h-[406px] rounded-[8px] ml-auto mr-[140px] bg-[white] '>
           <div>
             <div className='mt-[44px] text-center text-[24px] mb-[44px]'>
               欢迎来到陈磊之家
