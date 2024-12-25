@@ -1,9 +1,9 @@
-import { memo } from "react";
-import Menu from "./components/menu/Menu";
-import { Outlet } from "react-router-dom";
+import { memo } from 'react';
+import Menu from './components/menu/Menu';
+import { Outlet } from 'react-router-dom';
 const Layout = memo(() => {
   return (
-    <div className="w-[100vw] h-[100vh] bg-[#f7f8ff]">
+    <div className='w-[100vw] h-[100vh] bg-[#f7f8ff] overflow-y-auto'>
       <Menu />
       <Outlet />
     </div>

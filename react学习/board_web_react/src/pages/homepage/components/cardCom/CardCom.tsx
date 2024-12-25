@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import styleModule from './style.module.css';
+import styleModule from '../style.module.css';
 import { Spin } from '@arco-design/web-react';
 interface PropsType {
   tabList: { name: string }[];
@@ -27,7 +27,9 @@ const CardCom = memo((props: PropsType) => {
               </span>
             ))}
           </div>
-          <div className='text-[14px] text-primary'>查看更多</div>
+          <div className='text-[14px] text-primary cursor-pointer'>
+            查看更多
+          </div>
         </div>
         <div>
           {data.map((_, index) => (
@@ -35,8 +37,8 @@ const CardCom = memo((props: PropsType) => {
               key={index}
               className='flex justify-between py-[12px] border-t-solid border-t-[#f5f6f7] border-t-[1px]'
             >
-              <span>{_.name}</span>
-              <span>{_.date}</span>
+              <span className='flex-1 mr-[16px] line-clamp-1'>{_.name}</span>
+              <span className='flex-shrink-0'>{_.date}</span>
             </div>
           ))}
         </div>

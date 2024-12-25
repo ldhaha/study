@@ -73,7 +73,7 @@ const Login = memo(() => {
                   field='password'
                   rules={[{ required: true, message: ' 密码必填' }]}
                 >
-                  <Input.Password placeholder='请输入密码' />
+                  <Input.Password placeholder='请输入密码' autoComplete='off' />
                 </FormItem>
               </Form>
             </div>

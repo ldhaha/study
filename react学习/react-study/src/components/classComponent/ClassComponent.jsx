@@ -1,5 +1,5 @@
-import { Component, createRef, forwardRef } from "react";
-import { flushSync } from "react-dom";
+import { Component, createRef, forwardRef } from 'react';
+import { flushSync } from 'react-dom';
 
 /**
  * react优化  默认你如果更新state,即使相同的值，react也会重新执行render函数。
@@ -17,9 +17,9 @@ class ClassComponent extends Component {
   //1.constructor方法
   constructor() {
     super();
-    console.log("constructor");
+    console.log('constructor');
     this.state = {
-      message: "lindong",
+      message: 'lindong'
     };
     this.h2 = createRef();
     this.h3 = null;
@@ -42,11 +42,11 @@ class ClassComponent extends Component {
     // 同步更新，拿到最新的state
     flushSync(() => {
       this.setState({
-        message: "chenlei2",
+        message: 'chenlei2'
       });
     });
     console.log(this.state);
-    console.log("1313");
+    console.log('1313');
   }
 
   // 获取原生dom,只能针对类组件
@@ -63,11 +63,11 @@ class ClassComponent extends Component {
   // 2.render（改变state,props会重新执行render,然后在执行update）
   render() {
     const { message } = this.state;
-    console.log("render");
+    console.log('render');
     return (
       <div>
         <HelloWorld ref={this.helloworldRef} />
-        <h1 ref="h1">{message}</h1>
+        <h1 ref='h1'>{message}</h1>
         <h2 ref={this.h2}>class组件</h2>
         <button ref={(e) => (this.h3 = e)} onClick={() => this.getNativeEle()}>
           update
@@ -77,16 +77,16 @@ class ClassComponent extends Component {
   }
   // 3.componentDidMount
   componentDidMount() {
-    console.log("componentDidMount");
+    console.log('componentDidMount');
   }
   // 4.组建更新
   componentDidUpdate() {
-    console.log("更新完成");
+    console.log('更新完成');
   }
 
   // 5.组建卸载
   componentWillUnmount() {
-    console.log("组件即将被卸载");
+    console.log('组件即将被卸载');
   }
 
   // 返回true,更新时会重新执行render

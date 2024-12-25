@@ -1,7 +1,8 @@
-import { memo, useEffect, useState } from 'react';
+import { createRef, memo, useEffect, useRef, useState } from 'react';
 import sytleModule from './style.module.css';
 import CardCom from './components/cardCom/CardCom';
-import { leftCardData } from './mockData';
+import { leftCardData, rightCardData } from './mockData';
+import EchartsCom from './components/echartsCom/EchartsCom';
 type CardDataType = {
   name: string;
   date: string;
@@ -10,8 +11,13 @@ const Homepage = memo(() => {
   const [ltIndex, setLtIndex] = useState(0);
   const [rtIndex, setRtIndex] = useState(0);
   const [ltLoading, setLtLoading] = useState(false);
-  const [rtLoading] = useState(false);
+  const [rtLoading, setRtLoading] = useState(false);
   const [leftData, setLeftData] = useState<CardDataType[]>([]);
+  const [rightData, setRightData] = useState<CardDataType[]>([]);
+  const echartsRef = useRef<{
+    drawEcharts: () => void;
+    divRef: React.RefObject<HTMLDivElement>;
+  }>();
   const leftTopTabList = [
     {
       name: '火影忍者'
@@ -41,10 +47,26 @@ const Homepage = memo(() => {
       setLtLoading(false);
     }, 500);
   };
+  const generateRightData = (index: number) => {
+    setRtLoading(true);
+    setRtIndex(index);
+    const data = rightCardData[index];
+    setTimeout(() => {
+      setRightData(data);
+      setRtLoading(false);
+    }, 500);
+  };
 
   useEffect(() => {
     generateLeftData(0);
+    generateRightData(0);
+    console.log(echartsRef);
   }, []);
+  useEffect(() => {
+    if (echartsRef.current?.drawEcharts) {
+      echartsRef.current.drawEcharts();
+    }
+  }, [echartsRef]);
   return (
     <div className='w-[1400px] mx-auto pt-[11px]'>
       <div className={`h-[194px] ${sytleModule.banner} mb-[7px]`}></div>
@@ -59,11 +81,12 @@ const Homepage = memo(() => {
         <CardCom
           tabList={rightTopTabList}
           currentIndex={rtIndex}
-          setCurrent={setRtIndex}
+          setCurrent={generateRightData}
           loading={rtLoading}
-          data={[]}
+          data={rightData}
         />
       </div>
+      <EchartsCom ref={echartsRef}></EchartsCom>
     </div>
   );
 });
