@@ -1,10 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/utils/main.js":
-/*!***************************!*\
-  !*** ./src/utils/main.js ***!
-  \***************************/
+/***/ 3:
 /***/ ((module) => {
 
 module.exports = {
@@ -42,10 +39,7 @@ module.exports = {
 /************************************************************************/
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
-const main = __webpack_require__(/*! ./utils/main */ "./src/utils/main.js")
+const main = __webpack_require__(3)
 console.log(main.c)
 })();
 
