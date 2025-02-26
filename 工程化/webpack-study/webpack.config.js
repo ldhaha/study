@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     index: {
@@ -13,6 +14,13 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
     clean: true, // 删除之前的目录 和 CleanWebpackPlugin差不多
   },
-  mode: "none",
-  devtool: "source-map",
+  optimization: {
+    runtimeChunk: "multiple",
+  },
+  mode: "production",
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src/index.html"),
+    }),
+  ],
 };
