@@ -6,15 +6,21 @@
 var findAnagrams = function (s, p) {
   const res = [];
   const str_length = p.length;
+  const map = {};
+  for (let str of p) {
+    map[str] = (map[str] || 0) + 1;
+  }
   for (let i = 0; i < s.length - (p.length - 1); i++) {
+
+    const copy_map = { ...map };
     const split_str = s.substring(i, i + str_length);
-    const sort_split_str = split_str.split("");
-    sort_split_str.sort();
-    const sort_target_str = p.split("");
-    sort_target_str.sort();
-    if (JSON.stringify(sort_split_str) === JSON.stringify(sort_target_str)) {
-      res.push(i);
+    for (let str of split_str) {
+      copy_map[str] && (copy_map[str] = copy_map[str] - 1)
     }
+    if (Object.values(copy_map).every(v => v === 0)) {
+      res.push(i)
+    }
+
   }
   return res;
 };
