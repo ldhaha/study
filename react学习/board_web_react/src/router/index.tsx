@@ -1,22 +1,23 @@
-import { RouteObject } from "react-router-dom";
-import Login from "@/pages/login/Login";
-import Homepage from "@/pages/homepage/Homepage";
-import Layout from "@/pages/lauout/Layout";
+import { RouteObject } from 'react-router-dom';
+import Login from '@/pages/login/Login';
+import Homepage from '@/pages/homepage/Homepage';
+import Layout from '@/pages/lauout/Layout';
+
 const routes: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
-        path: "/homepage",
-        element: <Homepage />,
-      },
-    ],
+        path: '/homepage',
+        element: <Homepage />
+      }
+    ]
   },
   {
-    path: "/login",
-    element: <Login />,
-  },
+    path: '/login',
+    element: <Login />
+  }
 ];
 
 export default routes;
