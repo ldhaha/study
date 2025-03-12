@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .hx_pdf_tb {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .hx_pdf_tb td {
+        border: 1px solid #000;
+        padding: 8px;
+      }
+
+      .hx_pdf_tb tr:first-child td {
+        background-color: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper_table">
+      <div class="copy_div">
+        <div class="show_copy">
+          <span class="org_bot"></span><span class="copy_text">复制表格</span>
+        </div>
+        <span class="copy"><i class="icon_copy"></i></span>
+      </div>
+      <table id="hx_4" class="hx_pdf_tb" data-page="1">
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script>
+    console.log("112313");
+    (function () {
+      document.querySelectorAll(".copy_div").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          const wrapper = this.closest(".wrapper_table");
+          const originalTable = wrapper.querySelector(".hx_pdf_tb");
+
+          // 创建临时表格并克隆原表格
+          const tempTable = originalTable.cloneNode(true);
+
+          // 设置临时表格的样式
+          tempTable.style.cssText = `
+            border-collapse: collapse;
+            width: auto;
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+          `;
+
+          // 设置所有单元格样式
+          tempTable.querySelectorAll("td").forEach((cell) => {
+            cell.style.cssText = `
+              border: 1px solid #000;
+              padding: 5px;
+              white-space: nowrap;
+              max-width: 200px; /* 限制单元格最大宽度 */
+              overflow: hidden;
+              text-overflow: ellipsis;
+            `;
+          });
+
+          // 将临时表格添加到文档中（隐藏状态）
+          tempTable.style.position = "absolute";
+          tempTable.style.left = "-9999px";
+          document.body.appendChild(tempTable);
+
+          // 选择临时表格
+          const range = document.createRange();
+          range.selectNode(tempTable);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+
+          try {
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            alert("表格已复制，可以粘贴到Word中");
+          } catch (err) {
+            alert("复制失败，请重试");
+          }
+
+          // 移除临时表格
+          document.body.removeChild(tempTable);
+        });
+      });
+    })();
+  </script>
+</html>
