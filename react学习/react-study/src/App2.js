@@ -1,4 +1,10 @@
-import { useState, useCallback, createContext, useEffect } from "react";
+import {
+  useState,
+  useCallback,
+  createContext,
+  useEffect,
+  useMemo,
+} from "react";
 import { App2Child } from "./reviewComponent/app2Child/App2Child";
 import { Index } from "./pages/index/Index";
 import { About } from "./pages/about/About";
@@ -14,6 +20,11 @@ import {
 export const ThemeContext = createContext("light");
 export const UserContext = createContext(null);
 export const App = () => {
+  /** 如果使用useMemo，则不会重新渲染 ，children还没改  */
+  const topElement = useMemo(() => <div>top</div>, []);
+  const bottomElement = useMemo(() => <div>bottom</div>, []);
+  const childrenElement = useMemo(() => <div>children</div>, []);
+
   const [count, setCount] = useState(0);
 
   const [theme, setTheme] = useState("light");
@@ -47,11 +58,11 @@ export const App = () => {
         <UserContext.Provider value={user}>
           <App2Child
             handleClick={handleClick}
-            top={<div>这事top</div>}
-            bottom={<div>这事bottom</div>}
+            top={topElement}
+            bottom={bottomElement}
           >
-            <div>第一个children</div>
-            <div>第二个children</div>
+            {childrenElement}
+            {/* <div>第二个children</div> */}
           </App2Child>
           <div>-----------------------------------------</div>
           <Routes>
