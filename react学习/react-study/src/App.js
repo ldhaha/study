@@ -30,29 +30,29 @@ function App() {
   }
   return (
     // 组建通信
-    <AppContext.Provider value={count}>
-      <div className="App">
-        <header className="App-header">count:{count}</header>
-        <button onClick={addCount}>增加count</button>
-        <ClassComponent />
-        <Header />
-        <Main {...userInfo} setInfo={setUserInfo} />
-        <Footer />
-        <Slot />
-        <h2>受控组件</h2>
-        <ControlComponent />
-        <h2>高阶组件</h2>
-        <HighComponent />
-        <h2>Portal</h2>
-        <Portal />
-        <h2>动画</h2>
-        <Donghua />
-        <h2>CssModule</h2>
-        <CssModule />
-        <h2>CssInJs</h2>
-        <CssInJs />
-      </div>
-    </AppContext.Provider>
+
+    <div className="App">
+      <header className="App-header">count:{count}</header>
+      <button onClick={addCount}>增加count</button>
+      <ClassComponent />
+      <Header />
+      <Main {...userInfo} setInfo={setUserInfo} />
+      <Footer />
+      <Slot />
+      <h2>受控组件</h2>
+      <ControlComponent />
+      <h2>高阶组件</h2>
+      <HighComponent />
+      <h2>Portal</h2>
+      <Portal />
+      <h2>动画</h2>
+      <Donghua />
+      <h2>CssModule</h2>
+      <CssModule />
+      <h2>CssInJs</h2>
+      <CssInJs />
+    </div>
+
   );
 }
 

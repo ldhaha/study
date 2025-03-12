@@ -1,7 +1,8 @@
-import { useContext } from "react";
-import { AppContext } from "../App";
-import PropTypes from "prop-types";
-export function Main({ name = "宇智波斑", age = 26, setInfo }) {
+import { useContext, memo } from 'react';
+import { AppContext } from '../App';
+import PropTypes from 'prop-types';
+export const Main = memo(({ name = '宇智波斑', age = 26, setInfo }) => {
+  console.log('渲染了');
   //   console.log(props);
   //   const { setInfo } = props;
   // 任意地方传值
@@ -10,8 +11,8 @@ export function Main({ name = "宇智波斑", age = 26, setInfo }) {
     <div
       onClick={() =>
         setInfo({
-          name: "chenlei",
-          age: 24,
+          name: 'chenlei',
+          age: 24
         })
       }
     >
@@ -25,13 +26,13 @@ export function Main({ name = "宇智波斑", age = 26, setInfo }) {
       <div></div>
     </div>
   );
-}
+});
 
 // 约束类型
 Main.prototype = {
   name: PropTypes.string,
   age: PropTypes.number,
-  setInfo: PropTypes.func,
+  setInfo: PropTypes.func
 };
 
 // 类组件默认值
