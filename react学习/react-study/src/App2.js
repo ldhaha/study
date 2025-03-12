@@ -25,6 +25,7 @@ export const App = () => {
   const bottomElement = useMemo(() => <div>bottom</div>, []);
   const childrenElement = useMemo(() => <div>children</div>, []);
 
+  /** setCount传给子组件不会导致重新渲染 */
   const [count, setCount] = useState(0);
 
   const [theme, setTheme] = useState("light");
@@ -60,6 +61,7 @@ export const App = () => {
             handleClick={handleClick}
             top={topElement}
             bottom={bottomElement}
+            setCount={setCount}
           >
             {childrenElement}
             {/* <div>第二个children</div> */}
