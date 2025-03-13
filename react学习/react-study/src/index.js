@@ -2,18 +2,21 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { App } from "./App2";
-import { Suspense } from 'react'
+import { Suspense } from "react";
 import { HashRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <HashRouter>
-    <Suspense fallback={<div>loading...</div>}>
-      <App />
-    </Suspense>
-
-  </HashRouter>
+  <Provider store={store}>
+    <HashRouter>
+      <Suspense fallback={<div>loading...</div>}>
+        <App />
+      </Suspense>
+    </HashRouter>
+  </Provider>
   // </React.StrictMode>
 );
 

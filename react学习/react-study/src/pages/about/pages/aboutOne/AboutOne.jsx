@@ -1,3 +1,15 @@
+import { useNavigate } from "react-router-dom";
 export const AboutOne = () => {
-  return <>这事about第一个子页面</>;
+  const navigate = useNavigate();
+  const toHome = () => {
+    navigate("/home");
+  };
+  return (
+    <>
+      <div>这是aboutOne</div>
+      <div>
+        <button onClick={() => toHome()}>点击</button>
+      </div>
+    </>
+  );
 };
